@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine's Proposal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Playfair+Display:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Playfair Display', serif;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a0a1a 100%);
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow-x: hidden;
+            position: relative;
+        }
+        
+        /* Sparkles */
+        .sparkle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+            animation: float 5s infinite ease-in-out;
+            z-index: 1;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); opacity: 0.3; }
+            50% { transform: translateY(-20px) rotate(180deg); opacity: 1; }
+        }
+        
+        /* Main Container */
+        .container {
+            max-width: 1200px;
+            width: 100%;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            z-index: 2;
+            position: relative;
+        }
+        
+        /* Title */
+        .title {
+            text-align: center;
+            margin-bottom: 3rem;
+            font-family: 'Dancing Script', cursive;
+            font-size: 3.5rem;
+            color: #ff6b93;
+            text-shadow: 0 0 20px rgba(255, 107, 147, 0.5);
+            animation: pulse 3s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { text-shadow: 0 0 20px rgba(255, 107, 147, 0.5); }
+            50% { text-shadow: 0 0 30px rgba(255, 107, 147, 0.8); }
+        }
+        
+        /* Scene Container */
+        .scene {
+            width: 100%;
+            max-width: 900px;
+            height: 600px;
+            background: linear-gradient(45deg, #1f0b1f 0%, #2d0b2d 100%);
+            border-radius: 20px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
+            margin-bottom: 2rem;
+        }
+        
+        /* Fairy Lights Background */
+        .fairy-lights {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(255, 200, 255, 0.1) 2px, transparent 2px),
+                radial-gradient(circle at 30% 50%, rgba(255, 220, 180, 0.1) 2px, transparent 2px),
+                radial-gradient(circle at 70% 30%, rgba(255, 180, 220, 0.1) 2px, transparent 2px),
+                radial-gradient(circle at 90% 70%, rgba(220, 180, 255, 0.1) 2px, transparent 2px),
+                radial-gradient(circle at 50% 80%, rgba(180, 220, 255, 0.1) 2px, transparent 2px);
+            background-size: 200px 200px;
+            animation: twinkle 3s infinite alternate;
+        }
+        
+        @keyframes twinkle {
+            0% { opacity: 0.3; }
+            100% { opacity: 0.8; }
+        }
+        
+        /* Rose Petals Bed */
+        .petals-bed {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 250px;
+            background: 
+                radial-gradient(ellipse at 30% 100%, #8b0000 10%, transparent 20%),
+                radial-gradient(ellipse at 70% 100%, #a00000 10%, transparent 20%),
+                radial-gradient(ellipse at 50% 100%, #8b0000 15%, transparent 25%),
+                radial-gradient(ellipse at 20% 90%, #a00000 10%, transparent 20%),
+                radial-gradient(ellipse at 80% 90%, #8b0000 10%, transparent 20%);
+            border-radius: 0 0 20px 20px;
+        }
+        
+        /* Teddy Bear */
+        .teddy-bear {
+            position: absolute;
+            bottom: 180px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
+            height: 220px;
+            z-index: 3;
+        }
+        
+        .bear-body {
+            position: absolute;
+            width: 160px;
+            height: 180px;
+            background: linear-gradient(135deg, #8b4513 0%, #a0522d 30%, #8b4513 100%);
+            border-radius: 70% 70% 60% 60%;
+            box-shadow: 
+                inset 0 -10px 20px rgba(139, 69, 19, 0.5),
+                0 5px 15px rgba(0, 0, 0, 0.5);
+            left: 20px;
+            top: 20px;
+        }
+        
+        .bear-head {
+            position: absolute;
+            width: 120px;
+            height: 110px;
+            background: linear-gradient(135deg, #8b4513 0%, #a0522d 100%);
+            border-radius: 50% 50% 45% 45%;
+            top: 0;
+            left: 40px;
+            box-shadow: 
+                inset 0 -5px 10px rgba(139, 69, 19, 0.5),
+                0 3px 10px rgba(0, 0, 0, 0.3);
+        }
+        
+        .bear-ear {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #8b4513 0%, #a0522d 100%);
+            border-radius: 50%;
+            top: -15px;
+        }
+        
+        .ear-left { left: 20px; }
+        .ear-right { right: 20px; }
+        
+        .bear-eye {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            background-color: #000;
+            border-radius: 50%;
+            top: 40px;
+        }
+        
+        .eye-left { left: 35px; }
+        .eye-right { right: 35px; }
+        
+        .bear-nose {
+            position: absolute;
+            width: 20px;
+            height: 15px;
+            background-color: #000;
+            border-radius: 50%;
+            top: 60px;
+            left: 50px;
+        }
+        
+        /* Heart Envelope */
+        .heart-envelope {
+            position: absolute;
+            width: 100px;
+            height: 90px;
+            background: linear-gradient(45deg, #ff0000 0%, #ff3333 100%);
+            border-radius: 50%;
+            top: 120px;
+            left: 50px;
+            transform: rotate(-15deg);
+            box-shadow: 
+                0 0 30px rgba(255, 0, 0, 0.7),
+                inset 0 -5px 10px rgba(180, 0, 0, 0.5);
+            animation: glow 2s infinite alternate;
+            z-index: 4;
+            cursor: pointer;
+        }
+        
+        @keyframes glow {
+            0% { box-shadow: 0 0 20px rgba(255, 0, 0, 0.7); }
+            100% { box-shadow: 0 0 40px rgba(255, 0, 0, 0.9); }
+        }
+        
+        .heart-envelope:before,
+        .heart-envelope:after {
+            content: '';
+            position: absolute;
+            width: 100px;
+            height: 90px;
+            background: linear-gradient(45deg, #ff0000 0%, #ff3333 100%);
+            border-radius: 50%;
+        }
+        
+        .heart-envelope:before {
+            top: -50px;
+            left: 0;
+        }
+        
+        .heart-envelope:after {
+            top: 0;
+            left: 50px;
+        }
+        
+        .open-text {
+            position: absolute;
+            top: 30px;
+            left: 25px;
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.8rem;
+            color: #ffd700;
+            text-shadow: 0 0 5px rgba(255, 215, 0, 0.7);
+            z-index: 5;
+        }
+        
+        /* Proposal Card */
+        .proposal-card {
+            position: absolute;
+            width: 220px;
+            height: 160px;
+            background: linear-gradient(135deg, #fffaf0 0%, #fff5ee 100%);
+            border-radius: 10px;
+            top: 80px;
+            right: 150px;
+            padding: 20px;
+            box-shadow: 
+                0 10px 30px rgba(0, 0, 0, 0.5),
+                inset 0 0 10px rgba(139, 0, 0, 0.1);
+            z-index: 4;
+            transform: rotate(5deg);
+            opacity: 0;
+            transition: opacity 0.8s ease, transform 0.8s ease;
+            border: 2px solid #ffd700;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .proposal-card.show {
+            opacity: 1;
+            transform: rotate(5deg) translateY(0);
+        }
+        
+        .message {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.4rem;
+            color: #8b0000;
+            line-height: 1.5;
+            margin-bottom: 15px;
+        }
+        
+        .question {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: #a00000;
+            font-style: italic;
+        }
+        
+        /* Bokeh Effect */
+        .bokeh {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 20px;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .bokeh-circle {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255, 182, 193, 0.2) 0%, transparent 70%);
+            filter: blur(5px);
+        }
+        
+        /* Controls */
+        .instructions {
+            text-align: center;
+            color: #ffb6c1;
+            font-size: 1.2rem;
+            margin-top: 1rem;
+            max-width: 600px;
+            line-height: 1.6;
+            z-index: 2;
+        }
+        
+        /* Footer */
+        .footer {
+            margin-top: 2rem;
+            text-align: center;
+            color: #ffb6c1;
+            font-size: 0.9rem;
+            opacity: 0.8;
+            z-index: 2;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .scene {
+                height: 500px;
+            }
+            
+            .title {
+                font-size: 2.5rem;
+            }
+            
+            .teddy-bear {
+                transform: translateX(-50%) scale(0.8);
+            }
+            
+            .proposal-card {
+                right: 50px;
+                width: 180px;
+                height: 140px;
+                padding: 15px;
+            }
+            
+            .message {
+                font-size: 1.2rem;
+            }
+            
+            .question {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Sparkles -->
+    <div id="sparkles-container"></div>
+    
+    <!-- Main Container -->
+    <div class="container">
+        <h1 class="title">A Valentine's Proposal</h1>
+        
+        <!-- Scene -->
+        <div class="scene">
+            <div class="fairy-lights"></div>
+            <div class="bokeh" id="bokeh-container"></div>
+            
+            <!-- Rose Petals Bed -->
+            <div class="petals-bed"></div>
+            
+            <!-- Teddy Bear -->
+            <div class="teddy-bear">
+                <div class="bear-body"></div>
+                <div class="bear-head">
+                    <div class="bear-ear ear-left"></div>
+                    <div class="bear-ear ear-right"></div>
+                    <div class="bear-eye eye-left"></div>
+                    <div class="bear-eye eye-right"></div>
+                    <div class="bear-nose"></div>
+                </div>
+                
+                <!-- Heart Envelope -->
+                <div class="heart-envelope" id="heart-envelope">
+                    <div class="open-text">OPEN</div>
+                </div>
+            </div>
+            
+            <!-- Proposal Card -->
+            <div class="proposal-card" id="proposal-card">
+                <div class="message">"From the moment I met you, my heart chose you."</div>
+                <div class="question">Will you be mine forever?</div>
+            </div>
+        </div>
+        
+        <div class="instructions">
+            Click on the glowing heart to reveal the heartfelt proposal.
+        </div>
+        
+        <div class="footer">
+            A magical Valentine's Day scene • Made with 
+        </div>
+    </div>
+
+    <script>
+        // Create sparkles
+        const sparklesContainer = document.getElementById('sparkles-container');
+        for (let i = 0; i < 50; i++) {
+            const sparkle = document.createElement('div');
+            sparkle.classList.add('sparkle');
+            sparkle.style.left = `${Math.random() * 100}%`;
+            sparkle.style.top = `${Math.random() * 100}%`;
+            sparkle.style.animationDelay = `${Math.random() * 5}s`;
+            sparkle.style.width = `${Math.random() * 4 + 2}px`;
+            sparkle.style.height = sparkle.style.width;
+            sparklesContainer.appendChild(sparkle);
+        }
+        
+        // Create bokeh circles
+        const bokehContainer = document.getElementById('bokeh-container');
+        for (let i = 0; i < 15; i++) {
+            const circle = document.createElement('div');
+            circle.classList.add('bokeh-circle');
+            circle.style.left = `${Math.random() * 100}%`;
+            circle.style.top = `${Math.random() * 100}%`;
+            circle.style.width = `${Math.random() * 150 + 50}px`;
+            circle.style.height = circle.style.width;
+            circle.style.backgroundColor = `rgba(${Math.floor(Math.random() * 100 + 155)}, ${Math.floor(Math.random() * 100 + 100)}, ${Math.floor(Math.random() * 100 + 155)}, ${Math.random() * 0.2 + 0.1})`;
+            bokehContainer.appendChild(circle);
+        }
+        
+        // Heart envelope interaction
+        const heartEnvelope = document.getElementById('heart-envelope');
+        const proposalCard = document.getElementById('proposal-card');
+        
+        heartEnvelope.addEventListener('click', function() {
+            proposalCard.classList.toggle('show');
+            
+            if (proposalCard.classList.contains('show')) {
+                heartEnvelope.style.animation = 'glow 1s infinite alternate';
+                document.querySelector('.instructions').textContent = " The proposal has been revealed! May your heart say yes! ";
+            } else {
+                document.querySelector('.instructions').textContent = "Click on the glowing heart to reveal the heartfelt proposal.";
+            }
+        });
+        
+        // Add some random movement to sparkles
+        setInterval(() => {
+            const sparkles = document.querySelectorAll('.sparkle');
+            sparkles.forEach(sparkle => {
+                if (Math.random() > 0.7) {
+                    sparkle.style.left = `${Math.random() * 100}%`;
+                    sparkle.style.top = `${Math.random() * 100}%`;
+                }
+            });
+        }, 3000);
+    </script>
+</body>
+</html>
